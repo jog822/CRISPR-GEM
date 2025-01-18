@@ -1,7 +1,7 @@
 # CRISPR-GEM
 Machine learning model that predicts optimal target genes for CRISPR gene editing approaches. 
 
-Please download all files above and the data file from the link below to a directory and then load the GUI by running the "GUI3_1.py" script. The resulting gene lists and the DNN data file can be uploaded to a google drive to run the model in google colab. Detailed instructions are given in the "CRISPR_GEM_Tutorial.pdf" file.
+Please download all files above and the data file from the link below to a directory and then load the GUI by running the "GUI3_1.py" script. The resulting gene lists and the DNN data file can be uploaded to a google drive to run the model in google colab. Detailed instructions are given in the "GEM Tutorialv1.pdf" file.
 
 
 The data file for the GUI component can be downloaded here:

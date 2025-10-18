@@ -390,7 +390,6 @@ customtkinter.set_appearance_mode("dark")
 #customtkinter.set_default_color_theme("orange")
 current_directory = os.getcwd()
 customtkinter.set_default_color_theme(current_directory+"/orange2.json")
-window.iconbitmap(current_directory+"/Easton_icon1.ico")
 window.title("CRISPR-GEM")
 window.resizable(width=True, height=True)
 window.configure()
@@ -477,4 +476,3 @@ btn_reset.grid(row=7, column=0, columnspan=2, padx=5, pady=5)
 
 
 window.mainloop()
-

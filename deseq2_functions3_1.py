@@ -242,13 +242,23 @@ def deseq2(df, type, tag, CRISPR):
     b=dds.varm['LFC']
     c=b.copy()
     c2=c.copy()
-    c_sort=c.sort_values(by='Condition_'+unique_columns[0].replace("_","-")+'_vs_'+unique_columns[1].replace("_","-"), ascending=False)
-    c_sort.insert(loc=c_sort.columns.get_loc('Condition_'+unique_columns[0].replace("_","-")+'_vs_'+unique_columns[1].replace("_","-")) + 1, column="Rank", value=range(1, len(c) + 1))
+    #c_sort=c.sort_values(by='Condition_'+unique_columns[0].replace("_","-")+'_vs_'+unique_columns[1].replace("_","-"), ascending=False)
+    print('c')
+    print(c)
+    first_col = c.columns[1]
+    c_sort=c.sort_values(by=first_col, ascending=False)
+    c_sort.insert(loc=c_sort.columns.get_loc(first_col) + 1, column="Rank", value=range(1, len(c) + 1))
     inference = DefaultInference()
-    stat_res = DeseqStats(dds, inference=inference)
+    print('dds')
+    print(dds.obs['Condition'])
+    conditions = dds.obs['Condition'].unique().tolist()
+    if len(conditions) < 2:
+        raise ValueError("Need at least two conditions to run DESeq2")
+    contrast = ["Condition", conditions[0], conditions[1]]
+    stat_res = DeseqStats(dds, inference=inference, contrast = contrast)
     stat_res.summary()
     data=stat_res.results_df
-    data.insert(loc=data.columns.get_loc("padj") + 1, column="FoldChange", value=c_sort['Condition_'+unique_columns[0].replace("_","-")+'_vs_'+unique_columns[1].replace("_","-")])
+    data.insert(loc=data.columns.get_loc("padj") + 1, column="FoldChange", value=c_sort[first_col])
     if type == 'output':
         keep3 = data[(data['padj'] < 0.01)]
         if keep3.shape[0] >= 5000:

@@ -412,8 +412,7 @@ try:
     GNAR
     print("GNAR is already loaded.")
 except NameError:
-    GNAR = pd.read_csv(current_directory+"/big.csv", index_col=0)
-    print("Gnarly")
+    GNAR = pd.read_csv(current_directory+"/est_counts.csv", index_col=0)
 
 lbl_space1 = customtkinter.CTkLabel(master=window, text="")
 lbl_space1.grid(row=3, column=0)
@@ -475,5 +474,6 @@ dropdown_input.grid(row=3, column=0, columnspan=2, padx=5, pady=10)
 
 btn_reset = customtkinter.CTkButton(window, text="Reset", command=lambda: reset_selections(added_widgets+new_widg))
 btn_reset.grid(row=7, column=0, columnspan=2, padx=5, pady=5)
+
 
 window.mainloop()

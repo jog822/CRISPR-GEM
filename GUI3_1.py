@@ -30,8 +30,8 @@ from pydeseq2.dds import DeseqDataSet
 from pydeseq2.ds import DeseqStats
 from pydeseq2.utils import load_example_data
 from pydeseq2.default_inference import DefaultInference
-from deseq2_functions import extract_transcript_gene_mapping
-from deseq2_functions import download_annotation
+from deseq2_functions3_1 import extract_transcript_gene_mapping
+from deseq2_functions3_1 import download_annotation
 from run_deseq3_1 import run_deseq2
 from run_deseq3_1 import run_graph
 from run_deseq3_1 import run_umap
@@ -477,3 +477,4 @@ btn_reset.grid(row=7, column=0, columnspan=2, padx=5, pady=5)
 
 
 window.mainloop()
+
